@@ -3,335 +3,46 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Profiel van de Tijger</title>
+<meta name="description" content="Het korfbalprofiel van de Tijger, herschreven voor spelers van 14 tot 19 jaar.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="style.css">
 <style>
-/* Layout: oranje openingsband met tijgerstrepen, daarna één smalle kolom met korte blokken die je op je telefoon wegscrollt */
-:root {
-  --bg: #F5F7F1;
-  --panel: #E9EEE3;
-  --ink: #14201A;
-  --muted: #56635B;
-  --line: #D3DBCD;
-  --accent: #E2620B;
-  --accent-soft: #FBE3D2;
-  --on-accent: #14201A;
-  --stripe: #14201A;
-  --display: "Anton", "Impact", "Arial Narrow", sans-serif;
-  --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0F1612; --panel: #18231D; --ink: #EEF2EB; --muted: #9DAAA1; --line: #2B382F;
-    --accent: #FF8A2B; --accent-soft: #3A2414; --on-accent: #14201A; --stripe: #14201A;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0F1612; --panel: #18231D; --ink: #EEF2EB; --muted: #9DAAA1; --line: #2B382F;
-  --accent: #FF8A2B; --accent-soft: #3A2414; --on-accent: #14201A; --stripe: #14201A;
-  color-scheme: dark;
-}
-
-* { box-sizing: border-box; }
-body {
-  background: var(--bg); color: var(--ink);
-  font-family: var(--body); font-size: 17px; line-height: 1.55;
-}
-.wrap {
-  max-width: 920px; margin: 0 auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-}
-h1, h2, h3 { margin: 0; text-wrap: balance; }
-h2 { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 6vw, 44px); line-height: 1.05; letter-spacing: .01em; text-transform: uppercase; }
-h3 { font-size: 18px; font-weight: 800; line-height: 1.25; }
-p { margin: 0; max-width: 62ch; }
-.eyebrow { font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 3px; }
-a:focus-visible, input:focus-visible + .box { outline: 3px solid var(--accent); outline-offset: 3px; }
-
-/* Hero */
-.hero { background: var(--accent); color: var(--on-accent); position: relative; overflow: hidden; }
-.hero .wrap { padding-block: 40px 44px; position: relative; z-index: 1; display: grid; gap: 14px; }
-.hero .eyebrow { color: var(--on-accent); opacity: .8; }
-.hero h1 { font-family: var(--display); font-weight: 400; font-size: clamp(72px, 19vw, 168px); line-height: .9; text-transform: uppercase; letter-spacing: .005em; }
-.hero .lead { font-size: clamp(18px, 2.6vw, 22px); font-weight: 600; max-width: 34ch; line-height: 1.4; }
-.hero .note { font-size: 14px; max-width: 46ch; }
-.stripes { position: absolute; top: 0; right: 0; height: 100%; width: min(46%, 420px); }
-.stripes polygon { fill: var(--stripe); }
-@media (max-width: 600px) { .stripes { width: 52%; opacity: .55; } }
-
-section { padding-block: 44px; border-bottom: 1px solid var(--line); }
-section:last-of-type { border-bottom: 0; }
-.sec-head { display: grid; gap: 8px; margin-bottom: 22px; }
-.sec-head p { color: var(--muted); }
-
-/* Cijfers */
-.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-@media (max-width: 720px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.stat { background: var(--panel); border-radius: 6px; padding: 16px; display: grid; gap: 4px; align-content: start; }
-.stat b { font-family: var(--display); font-weight: 400; font-size: clamp(34px, 6vw, 46px); line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums; }
-.stat span { font-size: 15px; line-height: 1.35; }
-.stat small { font-size: 13px; color: var(--muted); line-height: 1.35; }
-
-.miss { margin-top: 28px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px; align-items: center; }
-@media (max-width: 620px) { .miss { grid-template-columns: minmax(0, 1fr); } }
-.miss h3 { font-size: 22px; margin-bottom: 8px; }
-.dots { display: grid; grid-template-columns: repeat(5, 30px); gap: 10px; }
-.dot { width: 30px; height: 30px; border-radius: 50%; border: 2.5px solid var(--muted); opacity: .55; }
-.dot.hit { background: var(--accent); border-color: var(--accent); opacity: 1; }
-.legend { display: flex; gap: 16px; margin-top: 12px; font-size: 13px; color: var(--muted); }
-.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: -1px; margin-right: 6px; }
-.legend .h { background: var(--accent); }
-.legend .m { border: 2px solid var(--muted); opacity: .7; }
-
-/* Kaarten */
-.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 28px; }
-@media (max-width: 640px) { .grid { grid-template-columns: minmax(0, 1fr); } }
-.item { display: grid; gap: 6px; padding-block: 14px; border-top: 3px solid var(--ink); }
-.item p { font-size: 16px; }
-.item .tag { font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
-
-/* Lijf */
-.body-wrap { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 32px; align-items: start; }
-@media (max-width: 640px) { .body-wrap { grid-template-columns: minmax(0, 1fr); } }
-.ruler { width: 100%; max-width: 260px; height: auto; }
-.ruler text { fill: var(--ink); font-family: var(--body); font-size: 11.5px; }
-.ruler .mut { fill: var(--muted); }
-.ruler .ln { stroke: var(--ink); }
-.ruler .tick { stroke: var(--muted); stroke-dasharray: 3 3; }
-.ruler .band { fill: var(--accent); }
-.ruler .korf { stroke: var(--accent); fill: none; }
-.facts { display: grid; gap: 0; }
-.fact { display: grid; grid-template-columns: 9.5em minmax(0, 1fr); gap: 12px; padding-block: 10px; border-bottom: 1px solid var(--line); font-size: 16px; }
-.fact dt { font-weight: 800; }
-.fact dd { margin: 0; font-variant-numeric: tabular-nums; }
-.callout { margin-top: 18px; background: var(--accent-soft); border-radius: 6px; padding: 14px 16px; font-size: 15px; }
-
-/* Let op */
-.watch { display: grid; gap: 14px; }
-.watch li { list-style: none; display: grid; gap: 4px; padding: 16px; background: var(--panel); border-radius: 6px; }
-.watch ul { margin: 0; padding: 0; display: grid; gap: 12px; }
-.watch .tip { font-size: 15px; color: var(--muted); }
-.watch .tip b { color: var(--ink); }
-
-.duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
-@media (max-width: 640px) { .duo { grid-template-columns: minmax(0, 1fr); } }
-.duo > div { display: grid; gap: 10px; align-content: start; }
-.big { font-family: var(--display); font-size: 56px; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
-
-/* Check */
-.check { display: grid; gap: 8px; margin: 0; padding: 0; }
-.check li { list-style: none; }
-.check label { display: flex; gap: 14px; align-items: center; padding: 12px 14px; border: 1px solid var(--line); border-radius: 6px; cursor: pointer; font-size: 16px; }
-.check input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-.box { flex: none; width: 26px; height: 26px; border: 2.5px solid var(--ink); border-radius: 5px; display: grid; place-items: center; }
-.box svg { width: 16px; height: 16px; opacity: 0; }
-.box svg path { stroke: var(--on-accent); }
-.check input:checked + .box { background: var(--accent); border-color: var(--accent); }
-.check input:checked + .box svg { opacity: 1; }
-.check input:checked ~ span { font-weight: 600; }
-.result { margin-top: 18px; padding: 18px; border-radius: 6px; background: var(--ink); color: var(--bg); display: grid; gap: 4px; }
-.result b { font-family: var(--display); font-weight: 400; font-size: 28px; letter-spacing: .02em; text-transform: uppercase; }
-
-footer { padding-block: 28px 48px; font-size: 14px; color: var(--muted); }
-footer p { max-width: 70ch; }
-
-@media (prefers-reduced-motion: no-preference) {
-  .box { transition: background .15s ease, border-color .15s ease; }
-}
+:root { --band: #E2620B; --on-band: #14201A; --deco: #14201A; --acc: #B84D06; --fill: #E2620B; --on-fill: #14201A; --soft: #FBE3D2 }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --band: #FF8A2B; --on-band: #14201A; --deco: #14201A; --acc: #FF9A45; --fill: #FF8A2B; --on-fill: #14201A; --soft: #3A2414 } }
+:root[data-theme="dark"] { --band: #FF8A2B; --on-band: #14201A; --deco: #14201A; --acc: #FF9A45; --fill: #FF8A2B; --on-fill: #14201A; --soft: #3A2414 }
 </style>
 </head>
 <body>
-
 <header class="hero">
-  <svg class="stripes" viewBox="0 0 400 400" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
-    <polygon points="400,10 150,46 400,70"/>
-    <polygon points="400,105 210,128 400,150"/>
-    <polygon points="400,185 120,224 400,252"/>
-    <polygon points="400,286 230,306 400,326"/>
-    <polygon points="400,352 170,384 400,400"/>
-    <polygon points="290,0 250,0 330,40"/>
-  </svg>
+  <svg class="deco" viewBox="0 0 400 400" preserveAspectRatio="xMaxYMid slice" aria-hidden="true"><polygon class="d" points="400,10 150,46 400,70"/><polygon class="d" points="400,105 210,128 400,150"/><polygon class="d" points="400,185 120,224 400,252"/><polygon class="d" points="400,286 230,306 400,326"/><polygon class="d" points="400,352 170,384 400,400"/><polygon class="d" points="290,0 250,0 330,40"/></svg>
   <div class="wrap">
+    <nav class="roles" aria-label="Rollen in de aanval"><a href="index.html" aria-current="page">Tijger</a><a href="panter.html">Panter</a><a href="wolf.html">Wolf</a><a href="beer.html">Beer</a></nav>
     <span class="eyebrow">Korfbal · rollen in de aanval</span>
     <h1>De Tijger</h1>
     <p class="lead">De schutter van het team. Als het spannend wordt, wil de tijger de bal. In de opstelling is dit de hoofdrol.</p>
-    <p class="note">Dit profiel is gebaseerd op hoe de topspelers van het Nederlands team deze rol spelen.</p>
+    <p class="note">Dit profiel is gebaseerd op hoe de topspelers van het Nederlands team deze rol speelden.</p>
   </div>
 </header>
-
 <main>
-  <section>
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">In cijfers</span>
-        <h2>Een tijger in één wedstrijd</h2>
-      </div>
-      <div class="stats">
-        <div class="stat"><b>20–30</b><span>schoten per wedstrijd</span></div>
-        <div class="stat"><b>20–30%</b><span>daarvan gaat erin</span></div>
-        <div class="stat"><b>4–6</b><span>doelpunten uit het spel</span><small>7–8 met vrije ballen en strafworpen erbij</small></div>
-        <div class="stat"><b>3–6 m</b><span>van de paal</span><small>Sta je hier vrij, dan schiet je. Altijd.</small></div>
-      </div>
-
-      <div class="miss">
-        <div>
-          <h3>Missen hoort erbij</h3>
-          <p>Een top-tijger mist ongeveer drie van de vier schoten. Toch blijft een tijger schieten. Wie niet schiet, scoort ook niet. Een misser is voor een tijger geen reden om het de volgende keer niet te proberen.</p>
-        </div>
-        <div>
-          <div class="dots" role="img" aria-label="25 schoten, waarvan 6 raak">
-            <span class="dot"></span><span class="dot"></span><span class="dot hit"></span><span class="dot"></span><span class="dot"></span>
-            <span class="dot"></span><span class="dot"></span><span class="dot hit"></span><span class="dot"></span><span class="dot"></span>
-            <span class="dot"></span><span class="dot hit"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-            <span class="dot"></span><span class="dot hit"></span><span class="dot"></span><span class="dot"></span><span class="dot hit"></span>
-            <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot hit"></span><span class="dot"></span>
-          </div>
-          <div class="legend"><span><i class="h"></i>raak</span><span><i class="m"></i>mis</span><span>25 schoten</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Op het veld</span>
-        <h2>Wat een tijger doet</h2>
-      </div>
-      <div class="grid">
-        <div class="item"><span class="tag">Wapen nr. 1</span><h3>Het afstandschot</h3><p>Uit een vrije positie gaat meer dan 30% erin. Omdat je verdediger daar bang voor is, krijg je ruimte voor de doorloopbal en de uitwijkbal.</p></div>
-        <div class="item"><span class="tag">Techniek</span><h3>Schieten vanaf hoofdhoogte</h3><p>Je zet het schot in op hoofdhoogte. Daardoor kan je verdediger het lastig blokken of de bal van richting laten veranderen.</p></div>
-        <div class="item"><span class="tag">Duel</span><h3>Winnen van je Guard</h3><p>Je wisselt steeds van tempo en richting. Ben je vrij, dan neem je alles even terug, kom je in balans en schiet je raak.</p></div>
-        <div class="item"><span class="tag">Altijd</span><h3>Elk moment een schot</h3><p>Je kunt op ieder moment van de wedstrijd tot een schot komen, juist ook als de spanning het hoogst is.</p></div>
-        <div class="item"><span class="tag">Basis</span><h3>Balvaardig</h3><p>Tijgers zijn van jongs af met een bal bezig. Je kunt ermee jongleren. Hoe beter je balgevoel, hoe meer opties je hebt.</p></div>
-        <div class="item"><span class="tag">Stilstaande bal</span><h3>Vrije ballen en strafworpen</h3><p>Ongeveer 30% van de doelpunten van een tijger komt uit vrije ballen en strafworpen. Die punten liggen voor het oprapen.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">In je hoofd</span>
-        <h2>Hoe een tijger denkt</h2>
-        <p>Dit deel maakt het grootste verschil. Lengte heb je niet in de hand, je mindset wel.</p>
-      </div>
-      <div class="grid">
-        <div class="item"><h3>Honger naar de goal</h3><p>Scoren staat centraal, in de wedstrijd en op de training. Je wilt er elke week beter in worden.</p></div>
-        <div class="item"><h3>Lef</h3><p>Je durft risico te nemen. Ook als een misser betekent dat jullie de bal kwijt zijn, schiet je als je vrij staat.</p></div>
-        <div class="item"><h3>Rust als het spannend is</h3><p>In de laatste minuten wil jij de bal. Je neemt de verantwoordelijkheid en blijft stabiel, wat er ook gebeurt.</p></div>
-        <div class="item"><h3>Snel weer door</h3><p>Gemist? Volgende. Je herstelt snel van tegenslag en laat je niet uit het veld slaan.</p></div>
-        <div class="item"><h3>Nooit wegduiken</h3><p>Je loopt geen duel uit de weg en verstopt je niet achter je teamgenoten.</p></div>
-        <div class="item"><h3>Je tegenstander lezen</h3><p>Je ziet snel waar je Guard zwak is, en daar speel je op in.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Het lijf</span>
-        <h2>Hoe hoog een top-tijger reikt</h2>
-      </div>
-      <div class="body-wrap">
-        <svg class="ruler" viewBox="0 0 260 300" role="img" aria-label="Schaal van 0 tot 3,50 meter: lengte tot 2,00 m, reikhoogte staand 2,60 m, in sprong 3,20 tot 3,30 m, korf op 3,50 m">
-          <line class="ln" x1="40" y1="280" x2="40" y2="22" stroke-width="3"/>
-          <line class="ln" x1="20" y1="280" x2="250" y2="280" stroke-width="1.5"/>
-          <ellipse class="korf" cx="40" cy="20" rx="20" ry="5" stroke-width="3"/>
-          <line class="tick" x1="40" y1="20" x2="78" y2="20"/>
-          <text x="84" y="24">korf · 3,50 m</text>
-          <rect class="band" x="34" y="34.9" width="12" height="7.4"/>
-          <line class="tick" x1="46" y1="38.6" x2="78" y2="44"/>
-          <text x="84" y="48">sprong · 3,20–3,30 m</text>
-          <circle class="band" cx="40" cy="86.9" r="5"/>
-          <line class="tick" x1="46" y1="86.9" x2="78" y2="86.9"/>
-          <text x="84" y="91">staand · 2,60 m</text>
-          <rect class="band" x="34" y="131.4" width="12" height="7.4" opacity=".55"/>
-          <line class="tick" x1="46" y1="135" x2="78" y2="135"/>
-          <text x="84" y="139">lengte · 1,90–2,00 m</text>
-          <text class="mut" x="84" y="276">vloer · 0 m</text>
-        </svg>
-        <div>
-          <dl class="facts">
-            <div class="fact"><dt>Lengte</dt><dd>1,90 – 2,00 m</dd></div>
-            <div class="fact"><dt>Reikhoogte staand</dt><dd>2,60 m</dd></div>
-            <div class="fact"><dt>Reikhoogte sprong</dt><dd>3,20 – 3,30 m</dd></div>
-            <div class="fact"><dt>Beweging</dt><dd>Snel, wendbaar, explosief</dd></div>
-            <div class="fact"><dt>Ogen en handen</dt><dd>Uitstekende oog-handcoördinatie, kan goed diepte zien</dd></div>
-          </dl>
-          <p class="callout">Dit zijn maten van volwassen topspelers. Jij groeit nog. Kijk dus vooral naar wat je zelf kunt trainen: snelheid, explosiviteit, je schot en je balgevoel.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Eerlijk is eerlijk</span>
-        <h2>Waar een tijger op moet letten</h2>
-        <p>Elk type heeft valkuilen. Deze komen uit het profiel zelf. De tips zijn een aanvulling.</p>
-      </div>
-      <ul class="watch">
-        <li><h3>Tunnelvisie</h3><p>Tijgers kijken vooral naar voren, naar de korf. Wat er naast ze gebeurt, zien ze minder.</p><p class="tip"><b>Tip:</b> kijk voor je schot één keer opzij. Staat een teamgenoot vrijer?</p></li>
-        <li><h3>Weinig oog voor de rest</h3><p>Veel tijgers letten weinig op de kansen van de Panter, de Wolf of de Beer. Een tijger gaat ook niet snel dubbelen om een ander vrij te spelen.</p><p class="tip"><b>Tip:</b> een assist telt ook. Een tijger die af en toe aangeeft, is moeilijker te verdedigen.</p></li>
-        <li><h3>Hoge eisen aan je team</h3><p>Een tijger verwacht veel van teamgenoten en wil dat ze hem of haar begrijpen.</p><p class="tip"><b>Tip:</b> praat met je aangevers over wanneer jij de bal wilt. Dat werkt beter dan boos kijken na een slechte pass.</p></li>
-      </ul>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap duo">
-      <div>
-        <span class="eyebrow">Je beste maatje</span>
-        <h2>De Wolf</h2>
-        <p>De Wolf is de beste helper van de tijger. Een Wolf voelt aan waar je staat en op welk moment je de bal moet krijgen. Daardoor werken jullie snel en slim samen.</p>
-      </div>
-      <div>
-        <span class="eyebrow">Geen jongensrol</span>
-        <span class="big">74</span>
-        <p>doelpunten in 14 wedstrijden, gemaakt door de enige vrouwelijke tijger in de Nederlandse competitie die 20–30% scoort. Nu zijn tijgers nog vooral mannen. De schrijver van het profiel vindt dat jammer: er zijn te weinig vrouwelijke tijgers. Meiden, deze rol is ook voor jullie.</p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Even checken</span>
-        <h2>Zit er een tijger in jou?</h2>
-        <p>Vink aan wat bij je past. Geen test, gewoon om over na te denken.</p>
-      </div>
-      <ul class="check" id="check">
-        <li><label for="c1"><input type="checkbox" id="c1"><span class="box"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Als het spannend wordt, wil ik de bal.</span></label></li>
-        <li><label for="c2"><input type="checkbox" id="c2"><span class="box"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Na een misser denk ik meteen: volgende.</span></label></li>
-        <li><label for="c3"><input type="checkbox" id="c3"><span class="box"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Ik schiet liever één keer te veel dan één keer te weinig.</span></label></li>
-        <li><label for="c4"><input type="checkbox" id="c4"><span class="box"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Een duel ga ik niet uit de weg.</span></label></li>
-        <li><label for="c5"><input type="checkbox" id="c5"><span class="box"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Schieten is het leukste deel van de training.</span></label></li>
-        <li><label for="c6"><input type="checkbox" id="c6"><span class="box"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Ik zie snel waar mijn verdediger zwak is.</span></label></li>
-        <li><label for="c7"><input type="checkbox" id="c7"><span class="box"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Sta ik vrij, dan twijfel ik niet.</span></label></li>
-        <li><label for="c8"><input type="checkbox" id="c8"><span class="box"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Ik kan snel wisselen van tempo en richting.</span></label></li>
-      </ul>
-      <div class="result" aria-live="polite">
-        <b id="score">0 van 8</b>
-        <span id="verdict">Vink hierboven aan wat bij je past.</span>
-      </div>
-    </div>
-  </section>
+<section><div class="wrap"><div class="sec-head"><span class="eyebrow">In cijfers</span><h2>Een tijger in één wedstrijd</h2></div><div class="stats"><div class="stat"><b>20–30</b><span>schoten per wedstrijd</span></div><div class="stat"><b>20–30%</b><span>daarvan gaat erin</span></div><div class="stat"><b>4–6</b><span>doelpunten uit het spel</span><small>7–8 met vrije ballen en strafworpen erbij</small></div><div class="stat"><b>3–6 m</b><span>van de paal</span><small>Sta je hier vrij, dan schiet je. Altijd.</small></div></div><div class="feature"><div class="miss"><div><h3>Missen hoort erbij</h3><p>Een top-tijger mist ongeveer drie van de vier schoten. Toch blijft een tijger schieten. Wie niet schiet, scoort ook niet. Een misser is voor een tijger geen reden om het de volgende keer niet te proberen.</p></div><div><div class="dots" role="img" aria-label="25 schoten, waarvan 6 raak"><span class="dot"></span><span class="dot"></span><span class="dot hit"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot hit"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot hit"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot hit"></span><span class="dot"></span><span class="dot"></span><span class="dot hit"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot hit"></span><span class="dot"></span></div><div class="legend"><span><i class="h"></i>raak</span><span><i class="m"></i>mis</span><span>25 schoten</span></div></div></div></div></div></section>
+<section><div class="wrap"><div class="sec-head"><span class="eyebrow">Op het veld</span><h2>Wat een tijger doet</h2></div><div class="grid"><div class="item"><span class="tag">Wapen nr. 1</span><h3>Het afstandschot</h3><p>Uit een vrije positie gaat meer dan 30% erin. Omdat je verdediger daar bang voor is, krijg je ruimte voor de doorloopbal en de uitwijkbal.</p></div><div class="item"><span class="tag">Techniek</span><h3>Schieten vanaf hoofdhoogte</h3><p>Je zet het schot in op hoofdhoogte. Daardoor kan je verdediger het lastig blokken of de bal van richting laten veranderen.</p></div><div class="item"><span class="tag">Duel</span><h3>Winnen van je Guard</h3><p>Je wisselt steeds van tempo en richting. Ben je vrij, dan neem je alles even terug, kom je in balans en schiet je raak.</p></div><div class="item"><span class="tag">Altijd</span><h3>Elk moment een schot</h3><p>Je kunt op ieder moment van de wedstrijd tot een schot komen, juist ook als de spanning het hoogst is.</p></div><div class="item"><span class="tag">Basis</span><h3>Balvaardig</h3><p>Tijgers zijn van jongs af met een bal bezig. Je kunt ermee jongleren. Hoe beter je balgevoel, hoe meer opties je hebt.</p></div><div class="item"><span class="tag">Stilstaande bal</span><h3>Vrije ballen en strafworpen</h3><p>Ongeveer 30% van de doelpunten van een tijger komt uit vrije ballen en strafworpen. Die punten liggen voor het oprapen.</p></div></div></div></section>
+<section><div class="wrap"><div class="sec-head"><span class="eyebrow">In je hoofd</span><h2>Hoe een tijger denkt</h2><p>Dit deel maakt het grootste verschil. Lengte heb je niet in de hand, je mindset wel.</p></div><div class="grid"><div class="item"><h3>Honger naar de goal</h3><p>Scoren staat centraal, in de wedstrijd en op de training. Je wilt er elke week beter in worden.</p></div><div class="item"><h3>Lef</h3><p>Je durft risico te nemen. Ook als een misser betekent dat jullie de bal kwijt zijn, schiet je als je vrij staat.</p></div><div class="item"><h3>Rust als het spannend is</h3><p>In de laatste minuten wil jij de bal. Je neemt de verantwoordelijkheid en blijft stabiel, wat er ook gebeurt.</p></div><div class="item"><h3>Snel weer door</h3><p>Gemist? Volgende. Je herstelt snel van tegenslag en laat je niet uit het veld slaan.</p></div><div class="item"><h3>Nooit wegduiken</h3><p>Je loopt geen duel uit de weg en verstopt je niet achter je teamgenoten.</p></div><div class="item"><h3>Je tegenstander lezen</h3><p>Je ziet snel waar je Guard zwak is, en daar speel je op in.</p></div></div></div></section>
+<section><div class="wrap"><div class="sec-head"><span class="eyebrow">Het lijf</span><h2>Hoe hoog een top-tijger reikt</h2></div><div class="body-wrap"><svg class="ruler" viewBox="0 0 300 300" role="img" aria-label="Schaal van 0 tot 3,50 meter: lengte 1,90 tot 2,00 m, reikhoogte staand 2,60 m, in sprong 3,20 tot 3,30 m, korf op 3,50 m"><line class="ln" x1="40" y1="280" x2="40" y2="22" stroke-width="3"/><line class="ln" x1="20" y1="280" x2="290" y2="280" stroke-width="1.5"/><ellipse class="korf" cx="40" cy="20" rx="20" ry="5" stroke-width="3"/><line class="tick" x1="62" y1="20" x2="82" y2="20"/><text x="88" y="24">korf · 3,50 m</text><rect class="band" x="34" y="34.9" width="12" height="7.4" rx="1.5"/><line class="tick" x1="48" y1="38.6" x2="82" y2="38.6"/><text x="88" y="42.6">sprong · 3,20–3,30 m</text><rect class="band" x="34" y="84.4" width="12" height="5.0" rx="1.5"/><line class="tick" x1="48" y1="86.9" x2="82" y2="86.9"/><text x="88" y="90.9">staand · 2,60 m</text><rect class="band" x="34" y="131.4" width="12" height="7.4" rx="1.5"/><line class="tick" x1="48" y1="135.1" x2="82" y2="135.1"/><text x="88" y="139.1">lengte · 1,90–2,00 m</text><text class="mut" x="88" y="276">vloer · 0 m</text></svg><div><dl class="facts"><div class="fact"><dt>Lengte</dt><dd>1,90–2,00 m</dd></div><div class="fact"><dt>Reikhoogte staand</dt><dd>2,60 m</dd></div><div class="fact"><dt>Reikhoogte sprong</dt><dd>3,20–3,30 m</dd></div><div class="fact"><dt>Beweging</dt><dd>Snel, wendbaar, explosief</dd></div><div class="fact"><dt>Ogen en handen</dt><dd>Uitstekende oog-handcoördinatie, kan goed diepte zien</dd></div></dl><p class="callout">Dit zijn maten van volwassen topspelers. Jij groeit nog. Kijk dus vooral naar wat je zelf kunt trainen: snelheid, explosiviteit, je schot en je balgevoel.</p></div></div></div></section>
+<section><div class="wrap"><div class="sec-head"><span class="eyebrow">Eerlijk is eerlijk</span><h2>Waar een tijger op moet letten</h2><p>Elk type heeft valkuilen. Deze komen uit het profiel zelf. De tips zijn een aanvulling.</p></div><ul class="watch"><li><h3>Tunnelvisie</h3><p>Tijgers kijken vooral naar voren, naar de korf. Wat er naast ze gebeurt, zien ze minder.</p><p class="tip"><b>Tip:</b> kijk voor je schot één keer opzij. Staat een teamgenoot vrijer?</p></li><li><h3>Weinig oog voor de rest</h3><p>Veel tijgers letten weinig op de kansen van de Panter, de Wolf of de Beer. Een tijger gaat ook niet snel dubbelen om een ander vrij te spelen.</p><p class="tip"><b>Tip:</b> een assist telt ook. Een tijger die af en toe aangeeft, is moeilijker te verdedigen.</p></li><li><h3>Hoge eisen aan je team</h3><p>Een tijger verwacht veel van teamgenoten en wil dat ze hem of haar begrijpen.</p><p class="tip"><b>Tip:</b> praat met je aangevers over wanneer jij de bal wilt. Dat werkt beter dan boos kijken na een slechte pass.</p></li></ul></div></section>
+<section><div class="wrap duo"><div><span class="eyebrow">Je beste maatje</span><h2>De Wolf</h2><p>De Wolf is de beste helper van de tijger. Een Wolf voelt aan waar je staat en op welk moment je de bal moet krijgen. Daardoor werken jullie snel en slim samen. <a href="wolf.html">Lees het profiel van de Wolf</a>.</p></div><div><span class="eyebrow">Geen jongensrol</span><span class="big">74</span><p>doelpunten in 14 wedstrijden, gemaakt door de enige vrouwelijke tijger in de Nederlandse competitie die 20–30% scoorde. Tijgers waren toen nog vooral mannen. De schrijver van het profiel vond dat jammer: er waren te weinig vrouwelijke tijgers. Meiden, deze rol is ook voor jullie.</p></div></div></section>
+<section><div class="wrap"><div class="sec-head"><span class="eyebrow">Even checken</span><h2>Zit er een tijger in jou?</h2><p>Vink aan wat bij je past. Geen test, gewoon om over na te denken.</p></div><ul class="check" id="check"><li><label for="c1"><input type="checkbox" id="c1"><span class="box"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Als het spannend wordt, wil ik de bal.</span></label></li><li><label for="c2"><input type="checkbox" id="c2"><span class="box"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Na een misser denk ik meteen: volgende.</span></label></li><li><label for="c3"><input type="checkbox" id="c3"><span class="box"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Ik schiet liever één keer te veel dan één keer te weinig.</span></label></li><li><label for="c4"><input type="checkbox" id="c4"><span class="box"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Een duel ga ik niet uit de weg.</span></label></li><li><label for="c5"><input type="checkbox" id="c5"><span class="box"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Schieten is het leukste deel van de training.</span></label></li><li><label for="c6"><input type="checkbox" id="c6"><span class="box"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Ik zie snel waar mijn verdediger zwak is.</span></label></li><li><label for="c7"><input type="checkbox" id="c7"><span class="box"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Sta ik vrij, dan twijfel ik niet.</span></label></li><li><label for="c8"><input type="checkbox" id="c8"><span class="box"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Ik kan snel wisselen van tempo en richting.</span></label></li></ul>
+<div class="result" aria-live="polite"><b id="score">0 van 8</b><span id="verdict">Vink hierboven aan wat bij je past.</span></div></div></section>
 </main>
-
 <footer>
   <div class="wrap">
-    <p>Bron: <a href="https://korfballadvisor.blogspot.com/search/label/Tijger" target="_blank" rel="noopener">Profiel van Tijger en de uitwerking van de rol van Tijger</a>, Korfball Advisor. Herschreven voor spelers van 14 tot 19 jaar. De tips bij de valkuilen en de check zijn toegevoegd.</p>
+    <p>Bron: de blog Korfball Advisor. De profielen zijn gebaseerd op topspelers van het Nederlands team van toen en herschreven voor spelers van 14 tot 19 jaar. Tips en de check zijn toegevoegd.</p>
+    <ul><li><a href="https://korfballadvisor.blogspot.com/2011/06/profiel-van-tijger-en-de-uitwerking-van.html" target="_blank" rel="noopener">Profiel van Tijger en de uitwerking van de rol van Tijger</a> (2011)</li></ul>
+    <p>Andere rollen: <a href="panter.html">Panter</a> · <a href="wolf.html">Wolf</a> · <a href="beer.html">Beer</a></p>
   </div>
 </footer>
-
 <script>
 (function () {
   var boxes = document.querySelectorAll('#check input');
@@ -342,7 +53,7 @@ footer p { max-width: 70ch; }
     boxes.forEach(function (b) { if (b.checked) n++; });
     score.textContent = n + ' van 8';
     if (n === 0) verdict.textContent = 'Vink hierboven aan wat bij je past.';
-    else if (n <= 2) verdict.textContent = 'Je kracht zit waarschijnlijk ergens anders. Ook goed: een tijger heeft teamgenoten nodig die het spel lezen en aangeven.';
+    else if (n <= 2) verdict.textContent = 'Je kracht zit waarschijnlijk ergens anders. Kijk ook eens bij de Panter, de Wolf of de Beer.';
     else if (n <= 5) verdict.textContent = 'Er zit een tijger in je. Werk aan je schot en je lef, en kijk wat er gebeurt.';
     else verdict.textContent = 'Tijger-alarm. Vraag je trainer eens of deze rol bij je past.';
   }
@@ -350,6 +61,5 @@ footer p { max-width: 70ch; }
   update();
 })();
 </script>
-
 </body>
 </html>
